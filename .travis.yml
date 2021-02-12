@@ -13,10 +13,11 @@ python:
   - "3.7"
 install:
   - pip install -r requirements.txt
-  - pip install codacy-coverage
 script:
   - cd decide
-  - python manage.py test voting
-  - coverage run --branch --source=. ./manage.py test --keepdb --with-xunit
-  - coverage xml
-  - python-codacy-coverage -r coverage.xml
+  - python manage.py test census
+deploy:
+  provider: heroku
+  app: "nombre de la app que no me ha dado tiempo a hacer"
+  strategy: git
+  api_key: $HEROKU_AUTH_TOKEN
